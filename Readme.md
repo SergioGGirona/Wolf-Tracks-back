@@ -5,6 +5,12 @@ Autor: Sergio G. Girona
 Enlace al Deploy: https://wolf-tracks-front.vercel.app/
 Objetivo: Realizar una web single page aplication, full stack MERN y mobile first, para demostrar en la práctica los conocimientos aprendidos a lo largo del bootcamp.
 
+## Importante:
+
+- El back está deployeado en render, modo hobby, por lo que es posible que tarde en cargar. El spinner del lobo aullando indica que los lobos se están cargando.
+- La suscripción no envía newsletter real, sino un correo de agradecimiento.
+- Puedes registrarte como empleado, pero en tu perfil solo aparecen los lobos a los que tú como "empleado" estarías haciendo seguimiento (los únicos que podrías editar), por lo que si estás probando la web, te recomendaría que entraras con el usuario y la contraseña "Luffy" o el usuario y contraseña Nami, para que pruebes distintos perfiles.
+
 ### La idea:
 
 Una web para una ONG de ayuda de conservación del lobo que se especializa en hacer un seguimiento manual de diferentes manadas para tener un mayor control sobre la población lobuna, a menudo sobreestimada.

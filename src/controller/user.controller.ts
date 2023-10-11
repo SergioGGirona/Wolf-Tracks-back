@@ -56,7 +56,6 @@ export class UserController extends Controller<User> {
   }
 
   async suscribe(req: Request, res: Response, next: NextFunction) {
-    console.log(req.body);
     try {
       if (!req.body)
         throw new HttpError(
@@ -65,8 +64,7 @@ export class UserController extends Controller<User> {
           'Not received name or mail'
         );
       const sendMail = await this.repository.suscribe(req.body);
-      res.status(201);
-      res.json(sendMail);
+      res.status(201).json(sendMail);
     } catch (error) {
       next(error);
     }
