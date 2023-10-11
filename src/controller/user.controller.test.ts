@@ -18,13 +18,14 @@ describe('Given the class UserController', () => {
 
     let mockRepo: UsersRepository;
     let userController: UserController;
-
+    const mockMail = { userName: 'Luffy', email: 'luffy@luffy.com' };
     beforeEach(() => {
       mockRepo = {
         getAll: jest.fn().mockResolvedValue([mockData]),
         getById: jest.fn().mockResolvedValue(mockData),
         create: jest.fn().mockResolvedValue(mockData),
         login: jest.fn().mockResolvedValue(mockData),
+        suscribe: jest.fn().mockResolvedValue(mockMail),
       } as unknown as UsersRepository;
 
       userController = new UserController(mockRepo);
@@ -112,6 +113,24 @@ describe('Given the class UserController', () => {
       expect(mockRepo.create).toHaveBeenCalledWith(mockData);
       expect(mockRes.status).toEqual(201);
     });
+
+    test('Then, you should call suscribe', async () => {
+      const mockReq = {
+        body: mockMail,
+      } as unknown as Request;
+
+      const mockRes = {
+        status: 201,
+        json: jest.fn().mockResolvedValueOnce({}),
+      } as unknown as Response;
+
+      const mockNext = jest.fn() as NextFunction;
+
+      await userController.suscribe(mockReq, mockRes, mockNext);
+
+      expect(mockRepo.suscribe).toHaveBeenCalledWith(mockMail);
+      expect(mockRes.status).toEqual(201);
+    });
   });
 
   describe('when we instantiate it with errors', () => {
@@ -121,8 +140,9 @@ describe('Given the class UserController', () => {
       mockRepo = {
         getAll: jest.fn().mockRejectedValueOnce(new Error('GetAll Error')),
         getById: jest.fn().mockRejectedValueOnce(new Error('GetById Error')),
-        create: jest.fn().mockRejectedValueOnce(new Error('create Error')),
+        create: jest.fn().mockRejectedValueOnce(new Error('Create Error')),
         login: jest.fn().mockResolvedValueOnce(false),
+        suscribe: jest.fn().mockResolvedValueOnce(new Error('Suscribe Error')),
       } as unknown as UsersRepository;
       userController = new UserController(mockRepo);
     });
@@ -170,6 +190,17 @@ describe('Given the class UserController', () => {
       const nextMocking = jest.fn() as NextFunction;
 
       await userController.login(mockRequest, responseMock, nextMocking);
+      expect(nextMocking).toHaveBeenCalled();
+    });
+
+    test('then we should suscribe with errors and catch the error', async () => {
+      const mockReq = {} as unknown as Request;
+      const responseMock = {
+        json: jest.fn(),
+      } as unknown as Response;
+      const nextMocking = jest.fn() as NextFunction;
+
+      await userController.suscribe(mockReq, responseMock, nextMocking);
       expect(nextMocking).toHaveBeenCalled();
     });
   });

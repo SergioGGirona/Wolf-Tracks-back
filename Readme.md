@@ -1,8 +1,15 @@
 # Project Wolf Tracks
 
-Trabajo final del bootcamp de programación de ISDI Coders.
+Proyecto personal de programación del curso de ISDI Coders.
 Autor: Sergio G. Girona
-Objetivo: Realiza una web fullstack MERN para demostrar en la práctica los conocimientos aprendidos a lo largo del bootcamp.
+Enlace al Deploy: https://wolf-tracks-front.vercel.app/
+Objetivo: Realizar una web single page aplication, full stack MERN y mobile first, para demostrar en la práctica los conocimientos aprendidos a lo largo del bootcamp.
+
+## Importante:
+
+- El back está deployeado en render, modo hobby, por lo que es posible que tarde en cargar. El spinner del lobo aullando indica que los lobos se están cargando.
+- La suscripción no envía newsletter real, sino un correo de agradecimiento.
+- Puedes registrarte como empleado, pero en tu perfil solo aparecen los lobos a los que tú como "empleado" estarías haciendo seguimiento (los únicos que podrías editar), por lo que si estás probando la web, te recomendaría que entraras con el usuario y la contraseña "Luffy" o el usuario y contraseña Nami, para que pruebes distintos perfiles.
 
 ### La idea:
 

@@ -1,8 +1,10 @@
 import { User } from '../entities/user.js';
+import { transporter } from '../helpers/mail.js';
 import { UserModel } from './users.model.js';
 import { UsersRepository } from './users.repository.js';
 
 jest.mock('./users.model');
+jest.mock('../helpers/mail.js');
 
 describe('Given the class UsersRepository', () => {
   describe('When we instantiate it without errors', () => {
@@ -55,6 +57,7 @@ describe('Given the class UsersRepository', () => {
       expect(result).toEqual(mockUser);
       expect(UserModel.create).toHaveBeenCalledWith(mockUser);
     });
+
     test('Then method update should return data', async () => {
       const mockExec = jest
         .fn()
@@ -90,6 +93,23 @@ describe('Given the class UsersRepository', () => {
 
       expect(result).toEqual(mockUser);
       expect(UserModel.find).toHaveBeenCalled();
+    });
+
+    test('Then method suscribe should return data', async () => {
+      const sendMailMock = jest.fn();
+      jest.mock('../helpers/mail.js', () => ({
+        ...jest.requireActual('../helpers/mail.js'),
+        transporter: () => ({
+          sendMail: sendMailMock,
+        }),
+      }));
+
+      await repository.suscribe({
+        userName: 'Luffy',
+        email: 'Luffy@test.com',
+      });
+
+      expect(transporter.sendMail).toHaveBeenCalledTimes(2);
     });
   });
   describe('When we instantiate it with errors', () => {
