@@ -98,7 +98,7 @@ describe('Given the class UsersRepository', () => {
     test('Then method suscribe should return data', async () => {
       const sendMailMock = jest.fn();
       jest.mock('../helpers/mail.js', () => ({
-        ...(jest.requireActual('../helpers/mail.js') as any),
+        ...jest.requireActual('../helpers/mail.js'),
         transporter: () => ({
           sendMail: sendMailMock,
         }),

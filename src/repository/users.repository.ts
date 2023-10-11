@@ -56,7 +56,8 @@ export class UsersRepository implements Repository<User> {
 
   async suscribe(newData: Suscriptor) {
     const { userName, email } = newData;
-    const data = await transporter.sendMail({
+
+    await transporter.sendMail({
       from: `Sergio G. Girona ${process.env.EMAIL}`,
       to: email,
       subject: 'WolfTracks, un proyecto de Sergio G. Girona',
@@ -81,6 +82,5 @@ export class UsersRepository implements Repository<User> {
       subject: 'Alguien ha mirado WolfTracks',
       text: `Alguien ha mirado y se ha suscrito a WolfTracks. Nombre: ${userName}, email: ${email}`,
     });
-    return data;
   }
 }
