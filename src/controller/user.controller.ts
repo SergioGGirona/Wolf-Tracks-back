@@ -54,4 +54,21 @@ export class UserController extends Controller<User> {
       next(error);
     }
   }
+
+  async suscribe(req: Request, res: Response, next: NextFunction) {
+    console.log(req.body);
+    try {
+      if (!req.body)
+        throw new HttpError(
+          411,
+          'Length Required',
+          'Not received name or mail'
+        );
+      const sendMail = await this.repository.suscribe(req.body);
+      res.status(201);
+      res.json(sendMail);
+    } catch (error) {
+      next(error);
+    }
+  }
 }

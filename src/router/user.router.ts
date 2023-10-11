@@ -18,4 +18,6 @@ userRouter.post(
     res.json(req.body);
   }
 );
+
+userRouter.post('/suscribe', userController.suscribe.bind(userController));
 userRouter.patch('/login', userController.login.bind(userController));

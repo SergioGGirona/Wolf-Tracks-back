@@ -1,8 +1,9 @@
 # Project Wolf Tracks
 
-Trabajo final del bootcamp de programación de ISDI Coders.
+Proyecto personal de programación del curso de ISDI Coders.
 Autor: Sergio G. Girona
-Objetivo: Realiza una web fullstack MERN para demostrar en la práctica los conocimientos aprendidos a lo largo del bootcamp.
+Enlace al Deploy: https://wolf-tracks-front.vercel.app/
+Objetivo: Realizar una web single page aplication, full stack MERN y mobile first, para demostrar en la práctica los conocimientos aprendidos a lo largo del bootcamp.
 
 ### La idea:
 
