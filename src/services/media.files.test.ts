@@ -22,7 +22,7 @@ describe('Given the class CloudinaryService', () => {
       const imdData = await cloudinary.uploadPhoto('');
       expect(imdData).toHaveProperty('publicId', 'Test image');
     });
-    test('Then its method resizePhoto should call cloudinary with the correct parameters', async () => {
+    test('Then its method resizePhoto should call cloudinary with the correct parameters', () => {
       const photoMock = {} as unknown as ImageData;
       const expectedParams = {
         transformation: {
@@ -32,7 +32,7 @@ describe('Given the class CloudinaryService', () => {
       };
       cloudinaryBase.v2.url = jest.fn();
 
-      await cloudinary.resizePhoto(photoMock);
+      cloudinary.resizePhoto(photoMock);
 
       expect(cloudinaryBase.v2.url).toHaveBeenCalledWith(
         photoMock.publicId,

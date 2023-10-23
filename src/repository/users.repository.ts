@@ -7,7 +7,7 @@ import { UserModel } from './users.model.js';
 
 export class UsersRepository implements Repository<User> {
   async getAll(): Promise<User[]> {
-    const data = await await UserModel.find()
+    const data = await UserModel.find()
       .populate('wolves', { nickname: 1 })
       .exec();
     return data;
